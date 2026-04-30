@@ -1,0 +1,17 @@
+# Runtime outputs
+outputs/
+state/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+scripts/__pycache__/
+
+# Local cloned service runtime data
+wechat-query-skill/
+wechat-query-skill/services/wechat-download-api/data/
+wechat-query-skill/services/wechat-download-api/.env
+
+# macOS
+.DS_Store
