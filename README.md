@@ -1,6 +1,6 @@
-# 收藏自动更新
+# weixingongzhonghao
 
-本目录用于记录和辅助运行“微信公众号文章入库 -> RSS 输出 -> Markdown 整理”的本地流程。
+本仓库用于记录和辅助运行“微信公众号文章入库 -> RSS 输出 -> Markdown 整理”的本地流程。
 
 当前已跑通的是手动流程：
 
@@ -13,7 +13,7 @@
 
 详细流程见：
 
-[docs/微信RSS手动流程记录.md](/Users/a123/Downloads/收藏自动更新/docs/微信RSS手动流程记录.md)
+[docs/微信RSS手动流程记录.md](docs/微信RSS手动流程记录.md)
 
 ## 常用入口
 
@@ -74,41 +74,3 @@ open outputs
 - `outputs/`、`state/`、数据库和登录状态属于运行数据，不建议同步到 Git。
 - 若要判断“新增”，必须先有更新前基线，再触发更新，再运行新增差异脚本。
 - 如果是先更新、后建基线，本次新增会被当作已见过，无法用链接基线倒推差异。
-
-```bash
-curl -s 'http://localhost:5050/api/rss/all?limit=10'
-```
-
-2. 生成 Markdown 素材包：
-
-```bash
-python3 scripts/wechat_rss_digest.py
-```
-
-如果需要全文版：
-
-```bash
-python3 scripts/wechat_rss_digest.py --full-text
-```
-
-3. 查看输出：
-
-```bash
-open outputs
-```
-
-默认输出文件：
-
-```text
-outputs/wechat-digest-YYYY-MM-DD.md
-outputs/wechat-fulltext-YYYY-MM-DD.md
-```
-
-## 当前输出格式
-
-- 值得优先看
-- 按公众号分组
-- 每篇文章保留标题、链接、发布时间、短摘要
-- 加 `--full-text` 后，每篇文章会额外输出清洗后的原文
-
-第一版先不直接写入 LifeOS。等输出格式稳定后，再决定接入 `01_Sources` 或 `03_Work_Applications`。
