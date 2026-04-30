@@ -9,11 +9,33 @@
 - 通过本地 RSS API 查看文章
 - 用脚本生成 Markdown 摘要、全文或新增清单
 
-说明：本仓库只保存本地流程说明和辅助脚本，不保存克隆下来的原始 `wechat-query-skill` 仓库及其运行数据。
+说明：本仓库只保存本地流程说明和辅助脚本；`wechat-query-skill` 是必需的上游依赖，但不直接复制进本仓库。
 
 详细流程见：
 
 [docs/微信RSS手动流程记录.md](docs/微信RSS手动流程记录.md)
+
+## 依赖项目
+
+本流程依赖原项目：
+
+```text
+https://github.com/adennng/wechat-query-skill
+```
+
+首次使用时，在本仓库根目录执行：
+
+```bash
+git clone https://github.com/adennng/wechat-query-skill.git
+```
+
+克隆后服务目录应为：
+
+```text
+wechat-query-skill/services/wechat-download-api
+```
+
+本仓库的脚本默认按这个目录结构读取本地数据库。
 
 ## 常用入口
 

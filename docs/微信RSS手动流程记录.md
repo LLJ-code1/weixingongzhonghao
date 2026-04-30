@@ -6,6 +6,42 @@
 
 当前阶段只记录手动流程，不设计自动化。
 
+## 项目组成
+
+本目录实际由两部分组成：
+
+```text
+weixingongzhonghao
+├── README.md                         # 本项目说明
+├── docs/                             # 手动流程记录
+├── scripts/                          # Markdown 整理和新增差异脚本
+└── wechat-query-skill/               # 上游依赖项目，本地 clone 后生成
+```
+
+其中 `wechat-query-skill/` 是运行服务的核心依赖，来自：
+
+```text
+https://github.com/adennng/wechat-query-skill
+```
+
+首次使用时，在本仓库根目录执行：
+
+```bash
+git clone https://github.com/adennng/wechat-query-skill.git
+```
+
+克隆完成后，应存在：
+
+```text
+wechat-query-skill/services/wechat-download-api
+```
+
+本仓库不直接提交 `wechat-query-skill/` 源码，原因是：
+
+- 它是独立上游项目，后续可以单独更新。
+- 它自身已经是 Git 仓库，直接提交会变成嵌套仓库。
+- 运行后会产生数据库、登录状态、缓存等本地数据，不适合同步到 Git。
+
 ## 当前链路
 
 ```text
@@ -205,6 +241,7 @@ scripts/wechat_rss_new.py
 ```text
 outputs/
 state/
+wechat-query-skill/
 wechat-query-skill/services/wechat-download-api/data/
 wechat-query-skill/services/wechat-download-api/.env
 scripts/__pycache__/
@@ -214,6 +251,7 @@ scripts/__pycache__/
 
 - `outputs/` 是每次运行生成的结果文件。
 - `state/` 是本地已读基线，换设备后可能需要重新建立。
+- `wechat-query-skill/` 是上游依赖项目，应通过 `git clone` 获取。
 - `data/` 里包含数据库和运行状态。
 - `.env` 可能包含本地配置。
 
